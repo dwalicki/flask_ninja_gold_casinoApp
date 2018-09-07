@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ninja Gold</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="totalcoins">
+            <img src="{{ url_for('static', filename='coin.gif') }}">
+            <h1>{{ totalcoins }}</h1>
+        </div>
+
+        <div class="box">
+            <h2>Farm</h2>
+            <p>(earns 10-20 gold)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="place" value="Farm">
+                <input type="submit" value="Find Gold!">
+            </form>
+        </div>
+
+        <div class="box">
+            <h2>Cave</h2>
+            <p>(earns 5-10 gold)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="place" value="Cave">
+                <input type="submit" value="Find Gold!">
+            </form>
+        </div>
+
+        <div class="box">
+            <h2>House</h2>
+            <p>(earns 2-5 gold)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="place" value="House">
+                <input type="submit" value="Find Gold!">
+            </form>
+        </div>
+
+        <div class="box">
+                <h2>Casino</h2>
+                <p>(earns/takes 0-50 gold)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="place" value="Casino">
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+
+            <div class="activities">
+                {{log}}
+
+                {% for act in range(0, loglength) %}
+
+                <p>{{log[act]}}</p>
+
+                {% endfor %}
+            </div>
+
+        <a href="/newgame">New Game</a>
+
+    </div>
+
+</body>
+</html>
